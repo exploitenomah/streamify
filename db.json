@@ -1,0 +1,180 @@
+{
+  "metrics": {
+    "totalUsers": 120000,
+    "activeUsers": 85000,
+    "totalStreams": 2500000,
+    "revenue": 780000,
+    "topArtist": "Drake"
+  },
+  "userGrowth": [
+    { "month": "2024-03-01", "totalUsers": 5102, "activeUsers": 3201 },
+    { "month": "2024-04-01", "totalUsers": 6105, "activeUsers": 3903 },
+    { "month": "2024-05-01", "totalUsers": 7208, "activeUsers": 4502 },
+    { "month": "2024-06-01", "totalUsers": 8300, "activeUsers": 5001 },
+    { "month": "2024-07-01", "totalUsers": 9400, "activeUsers": 5500 },
+    { "month": "2024-08-01", "totalUsers": 10500, "activeUsers": 6100 },
+    { "month": "2024-09-01", "totalUsers": 11600, "activeUsers": 6700 },
+    { "month": "2024-10-01", "totalUsers": 12700, "activeUsers": 7300 },
+    { "month": "2024-11-01", "totalUsers": 13800, "activeUsers": 7800 },
+    { "month": "2024-12-01", "totalUsers": 14900, "activeUsers": 8300 },
+    { "month": "2025-01-01", "totalUsers": 16000, "activeUsers": 8900 },
+    { "month": "2025-02-01", "totalUsers": 17100, "activeUsers": 9500 }
+  ],
+  "revenueDistribution": [
+    { "name": "Ads", "value": 6200 },
+    { "name": "Subscriptions", "value": 14500 },
+    { "name": "Partnerships", "value": 3900 },
+    { "name": "Merchandise", "value": 2800 },
+    { "name": "Live Events", "value": 5400 }
+  ],
+  "topStreamedSongs": [
+    { "song": "Echoes of You", "artist": "Luna Rae", "streams": 15000 },
+    { "song": "Neon Dreams", "artist": "Atlas Sky", "streams": 13400 },
+    { "song": "Midnight Vibes", "artist": "Zane Storm", "streams": 12000 },
+    { "song": "Golden Hour", "artist": "Sierra Blaze", "streams": 11050 },
+    { "song": "Into the Horizon", "artist": "Echo Waves", "streams": 9800 }
+  ],
+  "recentStreams": [
+    {
+      "song": "Echoes of You",
+      "artist": "Luna Rae",
+      "dateStreamed": "2025-02-25",
+      "streamCount": 1,
+      "userId": "USR1023"
+    },
+    {
+      "song": "Neon Dreams",
+      "artist": "Atlas Sky",
+      "dateStreamed": "2025-02-25",
+      "streamCount": 2,
+      "userId": "USR1056"
+    },
+    {
+      "song": "Midnight Vibes",
+      "artist": "Zane Storm",
+      "dateStreamed": "2025-02-25",
+      "streamCount": 1,
+      "userId": "USR1098"
+    },
+    {
+      "song": "Golden Hour",
+      "artist": "Sierra Blaze",
+      "dateStreamed": "2025-02-25",
+      "streamCount": 3,
+      "userId": "USR1015"
+    },
+    {
+      "song": "Into the Horizon",
+      "artist": "Echo Waves",
+      "dateStreamed": "2025-02-24",
+      "streamCount": 1,
+      "userId": "USR1044"
+    },
+    {
+      "song": "Sunset Groove",
+      "artist": "Milo Shades",
+      "dateStreamed": "2025-02-24",
+      "streamCount": 4,
+      "userId": "USR1072"
+    },
+    {
+      "song": "Lost in Time",
+      "artist": "Nova Ray",
+      "dateStreamed": "2025-02-23",
+      "streamCount": 2,
+      "userId": "USR1031"
+    },
+    {
+      "song": "Starlit Nights",
+      "artist": "Skylar Frost",
+      "dateStreamed": "2025-02-22",
+      "streamCount": 5,
+      "userId": "USR1089"
+    },
+    {
+      "song": "City Lights",
+      "artist": "Jayden Lux",
+      "dateStreamed": "2025-02-21",
+      "streamCount": 3,
+      "userId": "USR1050"
+    },
+    {
+      "song": "Ocean Waves",
+      "artist": "Kai Moon",
+      "dateStreamed": "2025-02-20",
+      "streamCount": 1,
+      "userId": "USR1027"
+    },
+    {
+      "song": "Dreamcatcher",
+      "artist": "Luna Rae",
+      "dateStreamed": "2025-02-19",
+      "streamCount": 2,
+      "userId": "USR1093"
+    },
+    {
+      "song": "Eclipse",
+      "artist": "Atlas Sky",
+      "dateStreamed": "2025-02-18",
+      "streamCount": 4,
+      "userId": "USR1041"
+    },
+    {
+      "song": "Serenity",
+      "artist": "Zane Storm",
+      "dateStreamed": "2025-02-17",
+      "streamCount": 1,
+      "userId": "USR1012"
+    },
+    {
+      "song": "Wanderlust",
+      "artist": "Sierra Blaze",
+      "dateStreamed": "2025-02-16",
+      "streamCount": 5,
+      "userId": "USR1067"
+    },
+    {
+      "song": "Aurora",
+      "artist": "Echo Waves",
+      "dateStreamed": "2025-02-15",
+      "streamCount": 3,
+      "userId": "USR1039"
+    },
+    {
+      "song": "Ethereal",
+      "artist": "Milo Shades",
+      "dateStreamed": "2025-02-14",
+      "streamCount": 2,
+      "userId": "USR1078"
+    },
+    {
+      "song": "Skybound",
+      "artist": "Nova Ray",
+      "dateStreamed": "2025-02-13",
+      "streamCount": 4,
+      "userId": "USR1084"
+    },
+    {
+      "song": "Nebula",
+      "artist": "Skylar Frost",
+      "dateStreamed": "2025-02-12",
+      "streamCount": 1,
+      "userId": "USR1054"
+    },
+    {
+      "song": "Euphoria",
+      "artist": "Jayden Lux",
+      "dateStreamed": "2025-02-11",
+      "streamCount": 3,
+      "userId": "USR1020"
+    },
+    {
+      "song": "Daydream",
+      "artist": "Kai Moon",
+      "dateStreamed": "2025-02-10",
+      "streamCount": 2,
+      "userId": "USR1091"
+    }
+  ]
+
+}
