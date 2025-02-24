@@ -4,7 +4,16 @@
     "activeUsers": 85000,
     "totalStreams": 2500000,
     "revenue": 780000,
-    "topArtist": "Drake"
+    "topArtist": {
+      "id": 1,
+      "name": "Drake",
+      "genre": "Hip-Hop/Rap",
+      "streams": 800000,
+      "monthly_listeners": 60000,
+      "top_song": "God's Plan",
+      "country": "Canada",
+      "image_url": "https://example.com/drake.jpg"
+    }
   },
   "userGrowth": [
     { "month": "2024-03-01", "totalUsers": 5102, "activeUsers": 3201 },
@@ -176,5 +185,4 @@
       "userId": "USR1091"
     }
   ]
-
 }
