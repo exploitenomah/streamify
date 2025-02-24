@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Dashboard",
+    "href": "/",
+    "icon": "LifebuoyIcon"
+  },
+  {
+    "name": "Users Analytics",
+    "href": "#",
+    "icon": "UserGroupIcon"
+  },
+  {
+    "name": "Streaming Insights",
+    "href": "#",
+    "icon": "LightBulbIcon"
+  },
+  {
+    "name": "Revenue & Monetization",
+    "href": "#",
+    "icon": "BanknotesIcon"
+  },
+  {
+    "name": "Content Performance",
+    "href": "#",
+    "icon": "ArrowTrendingUpIcon"
+  },
+  {
+    "name": "System Settings",
+    "href": "#",
+    "icon": "CogIcon"
+  }
+]
