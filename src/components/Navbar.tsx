@@ -1,29 +1,28 @@
 import { NavLink } from "../types/UIDataTypes"
 import { Link, useLocation } from "react-router"
 import * as HeroIcons from "@heroicons/react/24/outline"
+import AppLogo from "./AppLogo"
 
 export default function SideNavbar({
   links,
+  toggleOpen,
 }: {
   links: NavLink[]
   showLogo: boolean
+  isOpen: boolean
+  toggleOpen: (state: boolean) => void
 }) {
   const location = useLocation()
 
   return (
     <>
-      <nav className="py-8">
+      <nav className="py-7">
         <div className="ml-4 flex items-end justify-between">
-          <Link to="/">
-            <span className="sr-only">Streamify</span>
-            <img
-              src="/logo.svg"
-              width="180"
-              height="72"
-              className="object-contain"
-            />
-          </Link>
-          <button className="mr-2 text-text-light dark:text-text-dark hover:text-primary cursor-pointer mb-[4px] opacity-80">
+          <AppLogo />
+          <button
+            onClick={() => toggleOpen(false)}
+            className="md:hidden mr-2 text-text-light dark:text-text-dark hover:text-primary cursor-pointer mb-[4px] opacity-80"
+          >
             <HeroIcons.ChevronDoubleRightIcon width={30} height={30} />
           </button>
         </div>
