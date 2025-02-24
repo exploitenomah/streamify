@@ -1,9 +1,15 @@
-import "./App.css"
+import { Route, Routes } from "react-router"
+import DashboardLayout from "./components/DashboardLayout"
+import Home from "./Home/page"
 
 function App() {
   return (
     <>
-      <img src="/Streamify logo.svg" />
+      <DashboardLayout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </DashboardLayout>
     </>
   )
 }
