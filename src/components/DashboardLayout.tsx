@@ -3,6 +3,8 @@ import * as HeroIcons from "@heroicons/react/24/outline"
 import navLinks from "../data/navLinks.json"
 import { ReactNode, useCallback, useEffect, useState } from "react"
 import AppLogo from "./AppLogo"
+import UserProfileSummary from "./UserProfileSummary"
+import { Link } from "react-router"
 
 const HTMLElement = document.querySelector("html")
 
@@ -54,8 +56,8 @@ export default function DashboardLayout({
             <div className="md:hidden">
               <AppLogo />
             </div>
-            <div className="ml-auto flex items-end gap-6 mb-2">
-              <button onClick={toggleMode}>
+            <div className="ml-auto flex items-center gap-6 md:gap-4 mb-2">
+              <button className="cursor-pointer" onClick={toggleMode}>
                 {isDarkMode ? (
                   <HeroIcons.SunIcon
                     width={30}
@@ -70,6 +72,12 @@ export default function DashboardLayout({
                   />
                 )}
               </button>
+              <div className="hidden md:flex">
+                <Link to="/">
+                  <UserProfileSummary />
+                </Link>
+              </div>
+
               <button
                 onClick={() => setIsOpen((prev) => !prev)}
                 className="md:hidden "

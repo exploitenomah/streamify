@@ -2,6 +2,7 @@ import { NavLink } from "../types/UIDataTypes"
 import { Link, useLocation } from "react-router"
 import * as HeroIcons from "@heroicons/react/24/outline"
 import AppLogo from "./AppLogo"
+import UserProfileSummary from "./UserProfileSummary"
 
 export default function SideNavbar({
   links,
@@ -16,7 +17,7 @@ export default function SideNavbar({
 
   return (
     <>
-      <nav className="py-7">
+      <nav className="py-7 flex flex-col h-full">
         <div className="ml-4 flex items-end justify-between">
           <AppLogo />
           <button
@@ -36,6 +37,9 @@ export default function SideNavbar({
             </li>
           ))}
         </ul>
+        <div className="md:hidden">
+          <UserProfileSummary />
+        </div>
       </nav>
     </>
   )
