@@ -51,8 +51,8 @@ export default function DashboardLayout({
             showLogo
           />
         </div>
-        <div className="grow">
-          <header className="flex items-end px-6 md:py-12 py-4 gap-2">
+        <div className="w-screen md:w-unset md:grow md:pl-12">
+          <header className="flex items-end px-6 md:py-4 py-4 gap-2">
             <div className="md:hidden">
               <AppLogo />
             </div>

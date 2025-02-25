@@ -37,7 +37,7 @@ export default function SideNavbar({
             </li>
           ))}
         </ul>
-        <div className="md:hidden">
+        <div className="md:hidden mt-auto">
           <UserProfileSummary />
         </div>
       </nav>
@@ -59,9 +59,9 @@ export function NavLinkComponent({
         to={link.href}
         className={`${
           isActive
-            ? "text-primary bg-muted-light dark:bg-muted-dark"
+            ? "text-primary bg-muted-light/10 dark:bg-muted-dark/10"
             : "text-text-light dark:text-text-dark"
-        } px-4 py-2 md:px-6 flex gap-3 items-center hover:text-primary hover:bg-muted-light dark:hover:bg-muted-dark cursor-pointer text-base`}
+        } px-4 py-2 md:px-6 flex gap-3 items-center hover:text-primary hover:bg-muted-light/10 dark:hover:bg-muted-dark/10 cursor-pointer text-base`}
       >
         <span>
           <Icon width={30} height={30} />
