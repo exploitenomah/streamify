@@ -1,3 +1,4 @@
+import RecentStreamsTable from "../components/RecentStreamsTable"
 import StatCard from "../components/StatCard"
 
 export default function DashboardPage() {
@@ -16,6 +17,15 @@ export default function DashboardPage() {
           </div>
         </div>
       </main>
+      <section className="grid grid-cols-2 grid-rows-2 gap-8 mt-12">
+        <StatCard title={"Total Users"} subtext={"120K"} />
+        <StatCard title={"Active Users"} subtext={"85K"} />
+        <StatCard title={"Total Streams"} subtext={"2.5M"} />
+        <StatCard title={"Revenue"} subtext={"97.8K"} />
+      </section>
+      <section className="mt-16">
+        <RecentStreamsTable />
+      </section>
     </>
   )
 }
