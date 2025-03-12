@@ -42,7 +42,7 @@ export default function DashboardLayout({
             isOpen
               ? "fixed md:sticky translate-x-0"
               : "absolute md:sticky translate-x-[-100%] md:translate-x-0"
-          } transition ease-linear duration-300 md:my-[1dvh] md:ml-[1dvh] h-screen md:h-[98dvh] bg-card-light dark:bg-card-dark rounded-md w-[100dvw] md:w-[30dvw] sm:max-w-[360px] md:max-w-[320px] shadow-md`}
+          } z-[10000] shadow-xl  shadow-primary/10 transition ease-linear duration-300 md:my-[1dvh] md:ml-[1dvh] h-screen md:h-[98dvh] bg-card-light dark:bg-card-dark rounded-md w-[100dvw] md:w-[30dvw] sm:max-w-[360px] md:max-w-[320px]`}
         >
           <SideNavbar
             isOpen={isOpen}
@@ -51,8 +51,8 @@ export default function DashboardLayout({
             showLogo
           />
         </div>
-        <div className="w-screen md:w-unset md:grow md:pl-12 h-full overflow-auto">
-          <header className="flex items-end px-6 md:py-4 py-4 gap-2">
+        <div className="relative w-screen md:w-unset md:grow md:pl-12 h-full overflow-auto">
+          <header className="sticky z-[100] top-0 bg-background-light dark:bg-background-dark  flex items-end px-6 md:py-4 py-4 gap-2">
             <div className="md:hidden">
               <AppLogo />
             </div>
