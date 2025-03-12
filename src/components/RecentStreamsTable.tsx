@@ -1,3 +1,6 @@
+import { use, useMemo } from "react"
+import { Song, Stream } from "../types/DashboardDataTypes"
+
 const data = [
   {
     song: "Echoes of You",
@@ -35,10 +38,59 @@ const data = [
     userId: "USR1044",
   },
 ]
-export default function RecentStreamsTable() {
+export default function RecentStreamsTable({
+  recentStreamsPromise,
+  sortOption,
+  sortOrder,
+  searchTerm,
+}: {
+  recentStreamsPromise: Promise<{
+    data: Stream[]
+    first: number
+    items: number
+    last: number
+    next: number
+    pages: number
+  }>
+  searchTerm: string
+  sortOrder: "asc" | "desc"
+  sortOption: "dateStreamed" | "streamCount"
+}) {
+  const recentStreams = use(recentStreamsPromise)
+
+  // Filtering logic
+  const filteredData = useMemo(
+    () =>
+      recentStreams.data.filter(
+        (stream) =>
+          stream.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          stream.song.toLowerCase().includes(searchTerm.toLowerCase())
+      ),
+    [recentStreams.data, searchTerm]
+  )
+
+  // Sorting logic
+  const sortedData = useMemo(
+    () =>
+      [...filteredData].sort((a, b) => {
+        if (sortOption === "dateStreamed") {
+          return sortOrder === "asc"
+            ? new Date(a.dateStreamed).getTime() -
+                new Date(b.dateStreamed).getTime()
+            : new Date(b.dateStreamed).getTime() -
+                new Date(a.dateStreamed).getTime()
+        } else {
+          return sortOrder === "asc"
+            ? a.streamCount - b.streamCount
+            : b.streamCount - a.streamCount
+        }
+      }),
+    [filteredData, sortOption, sortOrder]
+  )
+
   return (
     <table className="w-full border-collapse text-left border border-primary/30 dark:border-primary/30">
-      <thead className="text-text-light dark:text-text-dark bg-card-light dark:bg-transparent text-text-light dark:text-text-dark">
+      <thead className="text-text-light dark:text-text-dark bg-card-light dark:bg-transparent">
         <tr>
           <th className="p-3 border border-primary/30 dark:border-primary/30">
             Song Name
@@ -58,7 +110,7 @@ export default function RecentStreamsTable() {
         </tr>
       </thead>
       <tbody>
-        {data.map((stream, index) => (
+        {sortedData.map((stream, index) => (
           <tr
             key={index}
             className="text-muted-light dark:text-muted-dark border border-primary/30 dark:border-primary/30 odd:bg-secondary-light/5 even:bg-card-light dark:odd:bg-primary/10 dark:even:bg-transparent"
