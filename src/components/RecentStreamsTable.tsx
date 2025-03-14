@@ -1,75 +1,28 @@
-import { use, useMemo } from "react"
-import { Song, Stream } from "../types/DashboardDataTypes"
+import { use, useMemo, useState } from "react"
+import { Stream } from "../types/DashboardDataTypes"
 
-const data = [
-  {
-    song: "Echoes of You",
-    artist: "Luna Rae",
-    dateStreamed: "2025-02-21",
-    streamCount: 1,
-    userId: "USR1023",
-  },
-  {
-    song: "Neon Dreams",
-    artist: "Atlas Sky",
-    dateStreamed: "2025-02-21",
-    streamCount: 2,
-    userId: "USR1056",
-  },
-  {
-    song: "Midnight Vibes",
-    artist: "Zane Storm",
-    dateStreamed: "2025-02-20",
-    streamCount: 1,
-    userId: "USR1098",
-  },
-  {
-    song: "Golden Hour",
-    artist: "Sierra Blaze",
-    dateStreamed: "2025-02-20",
-    streamCount: 3,
-    userId: "USR1015",
-  },
-  {
-    song: "Into the Horizon",
-    artist: "Echo Waves",
-    dateStreamed: "2025-02-19",
-    streamCount: 1,
-    userId: "USR1044",
-  },
-]
 export default function RecentStreamsTable({
   recentStreamsPromise,
-  sortOption,
-  sortOrder,
-  searchTerm,
 }: {
-  recentStreamsPromise: Promise<{
-    data: Stream[]
-    first: number
-    items: number
-    last: number
-    next: number
-    pages: number
-  }>
-  searchTerm: string
-  sortOrder: "asc" | "desc"
-  sortOption: "dateStreamed" | "streamCount"
+  recentStreamsPromise: Promise<Stream[]>
 }) {
   const recentStreams = use(recentStreamsPromise)
+  const [searchTerm, setSearchTerm] = useState("")
+  const [sortOption, setSortOption] = useState<"dateStreamed" | "streamCount">(
+    "dateStreamed"
+  )
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc")
 
-  // Filtering logic
   const filteredData = useMemo(
     () =>
-      recentStreams.data.filter(
+      recentStreams.filter(
         (stream) =>
           stream.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
           stream.song.toLowerCase().includes(searchTerm.toLowerCase())
       ),
-    [recentStreams.data, searchTerm]
+    [recentStreams, searchTerm]
   )
 
-  // Sorting logic
   const sortedData = useMemo(
     () =>
       [...filteredData].sort((a, b) => {
@@ -89,50 +42,125 @@ export default function RecentStreamsTable({
   )
 
   return (
-    <table className="w-full border-collapse text-left border border-primary/30 dark:border-primary/30">
-      <thead className="text-text-light dark:text-text-dark bg-card-light dark:bg-transparent">
-        <tr>
-          <th className="p-3 border border-primary/30 dark:border-primary/30">
-            Song Name
-          </th>
-          <th className="p-3 border border-primary/30 dark:border-primary/30">
-            Artist
-          </th>
-          <th className="p-3 border border-primary/30 dark:border-primary/30">
-            Date Streamed
-          </th>
-          <th className="p-3 border border-primary/30 dark:border-primary/30">
-            Stream Count
-          </th>
-          <th className="p-3 border border-primary/30 dark:border-primary/30">
-            User ID
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {sortedData.map((stream, index) => (
-          <tr
-            key={index}
-            className="text-muted-light dark:text-muted-dark border border-primary/30 dark:border-primary/30 odd:bg-secondary-light/5 even:bg-card-light dark:odd:bg-primary/10 dark:even:bg-transparent"
-          >
-            <td className="p-3 border border-primary/30 dark:border-primary/30">
-              {stream.song}
-            </td>
-            <td className="p-3 border border-primary/30 dark:border-primary/30">
-              {stream.artist}
-            </td>
-            <td className="p-3 border border-primary/30 dark:border-primary/30">
-              {stream.dateStreamed}
-            </td>
-            <td className="p-3 border border-primary/30 dark:border-primary/30">
-              {stream.streamCount}
-            </td>
-            <td className="p-3 border border-primary/30 dark:border-primary/30">
-              {stream.userId}
-            </td>
+    <>
+      <input
+        type="text"
+        placeholder="Search by artist or song..."
+        className="w-full p-2 mb-4 border border-current rounded-md text-muted-light dark:text-muted-dark"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <div className="flex justify-between items-center mb-4 text-muted-light dark:text-muted-dark">
+        <select
+          className="p-2 border rounded-md"
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value as typeof sortOption)}
+        >
+          <option value="dateStreamed">Sort by Date</option>
+          <option value="streamCount">Sort by Stream Count</option>
+        </select>
+
+        <button
+          className="p-2 border rounded-md"
+          onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
+        >
+          {sortOrder === "asc" ? "Ascending" : "Descending"}
+        </button>
+      </div>
+      <table className="w-full border-collapse text-left border border-primary/30 dark:border-primary/30">
+        <thead className="text-text-light dark:text-text-dark bg-card-light dark:bg-transparent">
+          <tr>
+            <th className="p-3 border border-primary/30 dark:border-primary/30">
+              Song Name
+            </th>
+            <th className="p-3 border border-primary/30 dark:border-primary/30">
+              Artist
+            </th>
+            <th className="p-3 border border-primary/30 dark:border-primary/30">
+              Date Streamed
+            </th>
+            <th className="p-3 border border-primary/30 dark:border-primary/30">
+              Stream Count
+            </th>
+            <th className="p-3 border border-primary/30 dark:border-primary/30">
+              User ID
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {sortedData.map((stream, index) => (
+            <tr
+              key={index}
+              className="text-muted-light dark:text-muted-dark border border-primary/30 dark:border-primary/30 odd:bg-secondary-light/5 even:bg-card-light dark:odd:bg-primary/10 dark:even:bg-transparent"
+            >
+              <td className="p-3 border border-primary/30 dark:border-primary/30">
+                {stream.song}
+              </td>
+              <td className="p-3 border border-primary/30 dark:border-primary/30">
+                {stream.artist}
+              </td>
+              <td className="p-3 border border-primary/30 dark:border-primary/30">
+                {stream.dateStreamed}
+              </td>
+              <td className="p-3 border border-primary/30 dark:border-primary/30">
+                {stream.streamCount}
+              </td>
+              <td className="p-3 border border-primary/30 dark:border-primary/30">
+                {stream.userId}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   )
+}
+
+export function RecentStreamsTableSkeleton() {
+  return (
+    <>
+      <div className="w-full p-2 mb-4 bg-gray-300 dark:bg-gray-700 rounded-md animate-pulse"></div>
+      <div className="flex justify-between items-center mb-4">
+        <div className="w-32 h-8 bg-gray-300 dark:bg-gray-700 rounded-md animate-pulse"></div>
+        <div className="w-24 h-8 bg-gray-300 dark:bg-gray-700 rounded-md animate-pulse"></div>
+      </div>
+      <table className="w-full border-collapse text-left border border-primary/30 dark:border-primary/30">
+        <thead className="text-text-light dark:text-text-dark bg-card-light dark:bg-transparent">
+          <tr>
+            {["Song Name", "Artist", "Date Streamed", "Stream Count", "User ID"].map(
+              (header, index) => (
+                <th
+                  key={index}
+                  className="p-3 border border-primary/30 dark:border-primary/30"
+                >
+                  {header}
+                </th>
+              )
+            )}
+          </tr>
+        </thead>
+        <tbody>
+          {Array(5) // Simulate 5 loading rows
+            .fill(0)
+            .map((_, index) => (
+              <tr
+                key={index}
+                className="text-muted-light dark:text-muted-dark border border-primary/30 dark:border-primary/30 odd:bg-secondary-light/5 even:bg-card-light dark:odd:bg-primary/10 dark:even:bg-transparent animate-pulse"
+              >
+                {Array(5)
+                  .fill(0)
+                  .map((_, cellIndex) => (
+                    <td
+                      key={cellIndex}
+                      className="p-3 border border-primary/30 dark:border-primary/30"
+                    >
+                      <div className="w-full h-4 bg-gray-300 dark:bg-gray-700 rounded-md"></div>
+                    </td>
+                  ))}
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </>
+  );
 }

@@ -56,3 +56,13 @@ export default function TopStreamsChart({
     </div>
   )
 }
+
+
+export function TopStreamsChartSkeleton() {
+  return (
+    <div className="flex flex-col gap-1 bg-card-light dark:bg-card-dark shadow-sm rounded-md py-6 text-muted-light dark:text-muted-dark w-full h-full animate-pulse">
+      <div className="w-[90%] h-[250px] mx-auto bg-gray-300 dark:bg-gray-700 rounded-md"></div>
+      <div className="w-32 h-5 mx-auto bg-gray-300 dark:bg-gray-700 rounded-md mt-3"></div>
+    </div>
+  )
+}

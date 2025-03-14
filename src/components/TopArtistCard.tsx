@@ -65,3 +65,33 @@ function KeyValueListItem({
     </li>
   )
 }
+
+export function TopArtistCardSkeleton() {
+  return (
+    <article className="h-full flex flex-col gap-3 bg-card-light dark:bg-card-dark shadow-sm rounded-md p-6 text-muted-light dark:text-muted-dark animate-pulse">
+      <div className="w-32 h-6 bg-gray-300 dark:bg-gray-700 rounded-md mb-3"></div>
+      <figure className="flex gap-6 items-center mb-3 justify-between text-right">
+        <div className="w-15 h-15 md:w-24 md:h-24 xl:w-28 xl:h-28 rounded-full bg-gray-300 dark:bg-gray-700"></div>
+        <figcaption className="flex flex-col gap-1">
+          <div className="w-36 h-5 bg-gray-300 dark:bg-gray-700 rounded-md"></div>
+          <div className="w-24 h-4 bg-gray-300 dark:bg-gray-700 rounded-md"></div>
+        </figcaption>
+      </figure>
+      <ul className="flex flex-col gap-2">
+        <KeyValueListItemSkeleton />
+        <KeyValueListItemSkeleton />
+        <KeyValueListItemSkeleton />
+        <KeyValueListItemSkeleton />
+      </ul>
+    </article>
+  )
+}
+
+export function KeyValueListItemSkeleton() {
+  return (
+    <li className="flex justify-between">
+      <div className="w-20 h-4 bg-gray-300 dark:bg-gray-700 rounded-md"></div>
+      <div className="w-24 h-4 bg-gray-300 dark:bg-gray-700 rounded-md"></div>
+    </li>
+  )
+}

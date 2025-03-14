@@ -1,9 +1,7 @@
 import { MetricsInterface } from "../types/DashboardDataTypes"
 import { numberToText } from "../utils"
-import StatCard from "./StatCard"
+import StatCard, { StatCardSkeleton } from "./StatCard"
 import { use } from "react"
-
-
 
 export default function Metrics({
   metricsPromise,
@@ -27,6 +25,17 @@ export default function Metrics({
         subtext={numberToText(metrics.totalStreams)}
       />
       <StatCard title={"Revenue"} subtext={numberToText(metrics.revenue)} />
+    </div>
+  )
+}
+
+export function MetricsSkeleton() {
+  return (
+    <div className="flex md:flex-wrap gap-3">
+      <StatCardSkeleton />
+      <StatCardSkeleton />
+      <StatCardSkeleton />
+      <StatCardSkeleton />
     </div>
   )
 }

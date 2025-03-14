@@ -16,3 +16,12 @@ export default function StatCard({
     </div>
   )
 }
+
+export function StatCardSkeleton() {
+  return (
+    <div className="min-w-max bg-card-light dark:bg-card-dark shadow-sm rounded-md p-6 grow text-left">
+      <div className="w-32 h-5 bg-gray-300 dark:bg-gray-700 animate-pulse rounded-md mb-2"></div>
+      <div className="w-24 h-8 bg-gray-300 dark:bg-gray-700 animate-pulse rounded-md"></div>
+    </div>
+  )
+}
